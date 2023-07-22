@@ -1,6 +1,9 @@
-const express = require("express");
-const router = new express.Router();
-const StudentDetails = require("../models/students");
+// const express = require("express");
+// const router = new express.Router();
+import { Router } from "express";
+import StudentDetails from "../models/students.js";
+
+const router = new Router();
 
 //Post data
 router.post("/students", async (req, res) => {
@@ -61,4 +64,4 @@ router.delete("/students/:rno", async (req, res) => {
   }
 });
 
-module.exports = router;
+export default router;

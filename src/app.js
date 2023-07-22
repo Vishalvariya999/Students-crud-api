@@ -1,17 +1,23 @@
-const express = require("express");
-require("../src/db/conn");
-const StudentDetails = require("../src/models/students");
-const router = require("./routers/studentsDetais");
-
+import express from "express";
+import "../src/db/conn.js";
+import http from "http";
+import cors from "cors";
+import router from "./routers/studentsDetais.js";
 const app = express();
-const port = process.env.PORT || 3000;
+const server = http.createServer(app);
 
+app.use(cors("*"));
 app.use(express.json());
-app.use(router); 
+app.use(router);
+
+const port = process.env.PORT || 8080;
+
 // app.get("/", async (req, res) => {
 //   res.send();
 // });
 
-app.listen(port, () => {
-  console.log("port :>>", `${port}`);
+server.listen(port, (err) => {
+  if (!err) {
+    console.log(`server running on http://localhost:${port}`);
+  }
 });
