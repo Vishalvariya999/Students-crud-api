@@ -10,14 +10,18 @@ app.use(cors("*"));
 app.use(express.json());
 app.use(router);
 
-const port = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8080;
+// const PORT =
+//   process.env.STATUS === "production"
+//     ? process.env.PRO_PORT
+//     : process.env.TEST_PORT;
 
 // app.get("/", async (req, res) => {
 //   res.send();
 // });
 
-server.listen(port, (err) => {
+server.listen(PORT, (err) => {
   if (!err) {
-    console.log(`server running on http://localhost:${port}`);
+    console.log(`server running on http://localhost:${PORT}`);
   }
 });

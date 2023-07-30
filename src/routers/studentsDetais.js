@@ -28,10 +28,19 @@ router.get("/students", async (req, res) => {
 });
 
 //Get data rno wise
+// router.get("/students/:rno", async (req, res) => {
+//   try {
+//     const rno = req.params.rno;
+//     const getStudent = await StudentDetails.find({ rno: rno });
+//     res.send(getStudent);
+//   } catch (err) {
+//     res.status(400).send(err);
+//   }
+// });
 router.get("/students/:rno", async (req, res) => {
   try {
     const rno = req.params.rno;
-    const getStudent = await StudentDetails.find({ rno: rno });
+    const getStudent = await StudentDetails.find({ rno: rno }).sort({ rno: 1 });
     res.send(getStudent);
   } catch (err) {
     res.status(400).send(err);
